@@ -59,9 +59,6 @@ export async function updateInvoice(id: string, formData: FormData): Promise<voi
     `;
     } catch (error) {
         console.error('Error updating invoice:', error);
-        return {
-            message: 'There was an error updating the invoice. Please try again.',
-        };
   }
  
   revalidatePath('/dashboard/invoices');
@@ -69,7 +66,6 @@ export async function updateInvoice(id: string, formData: FormData): Promise<voi
 }
 
 export async function deleteInvoice(id: string) {
-    throw new Error('Delete invoice not implemented yet');
     await sql`DELETE FROM invoices WHERE id = ${id}`;
     revalidatePath('/dashboard/invoices');
     
